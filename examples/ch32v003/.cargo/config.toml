@@ -6,11 +6,10 @@ target = "riscv32ec-unknown-none-elf.json"
 # runner = "riscv-none-embed-gdb -q -x openocd.gdb"
 # runner = "gdb -q -x openocd.gdb"
 # runner = "wlink -v flash"
-
-runner = "wlink -v flash --enable-sdi-print --watch-serial"
+runner = "wlink flash --enable-sdi-print --watch-serial"
 
 # Flash and debug chip with probe-rs. https://probe.rs/
-# runner = "probe-rs run --chip ch32v003"
+#runner = "probe-rs run --chip ch32v003"
 
 [unstable]
 build-std = ["core"]
@@ -20,5 +19,8 @@ json-target-spec = true
 
 [target."riscv32ec-unknown-none-elf"]
 rustflags = [
-#  "-C", "link-arg=-Tlink.x",
+    #  "-C", "link-arg=-Tlink.x",
 ]
+
+[env]
+RUSTLOG="info"
